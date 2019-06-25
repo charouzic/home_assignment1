@@ -26,14 +26,14 @@
 		"linkedService1_password": {
 			"value": ""
 		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://keyvault-test-ds.vault.azure.net/"
+		},
 		"linkedService1_properties_typeProperties_userName": {
 			"value": "sftpfileshare"
 		},
 		"trigger1_properties_typeProperties_scope": {
 			"value": "/subscriptions/26377992-8f40-494c-b03a-587c197cfb51/resourceGroups/keyvaults_test/providers/Microsoft.Storage/storageAccounts/testkeyvaultviktor"
-		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"value": "https://keyvault-test-ds.vault.azure.net/"
 		}
 	}
 }

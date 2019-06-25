@@ -35,6 +35,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService1'"
 		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault-test-ds.vault.azure.net/"
+		},
 		"linkedService1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sftpfileshare"
@@ -42,10 +46,6 @@
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/26377992-8f40-494c-b03a-587c197cfb51/resourceGroups/keyvaults_test/providers/Microsoft.Storage/storageAccounts/testkeyvaultviktor"
-		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://keyvault-test-ds.vault.azure.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -95,11 +95,11 @@
 					"linkedService1_password": {
 						"value": "[parameters('linkedService1_password')]"
 					},
-					"linkedService1_properties_typeProperties_userName": {
-						"value": "[parameters('linkedService1_properties_typeProperties_userName')]"
-					},
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"linkedService1_properties_typeProperties_userName": {
+						"value": "[parameters('linkedService1_properties_typeProperties_userName')]"
 					},
 					"trigger1_properties_typeProperties_scope": {
 						"value": "[parameters('trigger1_properties_typeProperties_scope')]"

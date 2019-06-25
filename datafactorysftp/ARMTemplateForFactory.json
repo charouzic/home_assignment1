@@ -35,6 +35,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService1'"
 		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault-test-ds.vault.azure.net/"
+		},
 		"linkedService1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sftpfileshare"
@@ -42,10 +46,6 @@
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/26377992-8f40-494c-b03a-587c197cfb51/resourceGroups/keyvaults_test/providers/Microsoft.Storage/storageAccounts/testkeyvaultviktor"
-		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://keyvault-test-ds.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -107,7 +107,7 @@
 							"notebookPath": "/data_factory_test"
 						},
 						"linkedServiceName": {
-							"referenceName": "AzureDatabricks5",
+							"referenceName": "AzureDatabricks6",
 							"type": "LinkedServiceReference"
 						}
 					}
@@ -115,7 +115,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks5')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks6')]"
 			]
 		},
 		{
@@ -255,6 +255,43 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricks6')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://westeurope.azuredatabricks.net",
+					"accessToken": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault1",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "dbxtoken"
+					},
+					"existingClusterId": "0418-094607-lint489"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/linkedService1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -329,19 +366,6 @@
 							"timeToLiveInMinutes": 60
 						}
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureKeyVault",
-				"typeProperties": {
-					"baseUrl": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []

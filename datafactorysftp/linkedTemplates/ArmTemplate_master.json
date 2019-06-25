@@ -1,0 +1,112 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "datafactorysftp"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
+		"AzureDatabricks2_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks2'"
+		},
+		"AzureDatabricks3_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks3'"
+		},
+		"AzureDatabricks4_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks4'"
+		},
+		"linkedService1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'linkedService1'"
+		},
+		"linkedService1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sftpfileshare"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/26377992-8f40-494c-b03a-587c197cfb51/resourceGroups/keyvaults_test/providers/Microsoft.Storage/storageAccounts/testkeyvaultviktor"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault-test-ds.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas Token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
+					"AzureDatabricks2_accessToken": {
+						"value": "[parameters('AzureDatabricks2_accessToken')]"
+					},
+					"AzureDatabricks3_accessToken": {
+						"value": "[parameters('AzureDatabricks3_accessToken')]"
+					},
+					"AzureDatabricks4_accessToken": {
+						"value": "[parameters('AzureDatabricks4_accessToken')]"
+					},
+					"linkedService1_password": {
+						"value": "[parameters('linkedService1_password')]"
+					},
+					"linkedService1_properties_typeProperties_userName": {
+						"value": "[parameters('linkedService1_properties_typeProperties_userName')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"trigger1_properties_typeProperties_scope": {
+						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

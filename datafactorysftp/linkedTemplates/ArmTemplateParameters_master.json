@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datafactorysftp"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks2_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks3_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks4_accessToken": {
+			"value": ""
+		},
+		"linkedService1_password": {
+			"value": ""
+		},
+		"linkedService1_properties_typeProperties_userName": {
+			"value": "sftpfileshare"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/26377992-8f40-494c-b03a-587c197cfb51/resourceGroups/keyvaults_test/providers/Microsoft.Storage/storageAccounts/testkeyvaultviktor"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://keyvault-test-ds.vault.azure.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

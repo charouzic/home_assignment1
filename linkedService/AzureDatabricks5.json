@@ -1,14 +1,25 @@
 {
 	"name": "AzureDatabricks5",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"type": "AzureDatabricks",
 		"typeProperties": {
 			"domain": "https://westeurope.azuredatabricks.net",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "dbxtoken"
+			},
 			"newClusterNodeType": "Standard_F4s",
 			"newClusterNumOfWorker": "1",
+			"newClusterSparkEnvVars": {
+				"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+			},
 			"newClusterVersion": "5.4.x-scala2.11",
 			"Credential": "dapiab9dc264e683bbaf16b7ab54239eb530"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }

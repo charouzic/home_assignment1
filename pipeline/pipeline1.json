@@ -16,7 +16,7 @@
 					"notebookPath": "/data_factory_test"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureDatabricks1",
+					"referenceName": "AzureDatabricks3",
 					"type": "LinkedServiceReference"
 				}
 			}

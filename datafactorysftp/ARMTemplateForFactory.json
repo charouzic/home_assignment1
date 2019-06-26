@@ -123,13 +123,13 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"name": "[concat(parameters('factoryName'), '/pipelinetest')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Notebook1",
+						"name": "NotebookTest",
 						"type": "DatabricksNotebook",
 						"dependsOn": [],
 						"policy": {
@@ -144,7 +144,7 @@
 							"notebookPath": "/data_factory_test"
 						},
 						"linkedServiceName": {
-							"referenceName": "AzureDatabricks7",
+							"referenceName": "AzureDatabricksTest",
 							"type": "LinkedServiceReference"
 						}
 					}
@@ -152,7 +152,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks7')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricksTest')]"
 			]
 		},
 		{
@@ -316,7 +316,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureDatabricks7')]",
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricksTest')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -332,12 +332,7 @@
 						},
 						"secretName": "dbxtoken"
 					},
-					"newClusterNodeType": "Standard_F4s",
-					"newClusterNumOfWorker": "1",
-					"newClusterSparkEnvVars": {
-						"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
-					},
-					"newClusterVersion": "5.4.x-scala2.11"
+					"existingClusterId": "0418-094607-lint489"
 				}
 			},
 			"dependsOn": [

@@ -29,6 +29,9 @@
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://keyvault-test-ds.vault.azure.net/"
 		},
+		"AzureKeyVaultTest_properties_typeProperties_baseUrl": {
+			"value": "https://keyvault-test-ds.vault.azure.net/"
+		},
 		"linkedService1_properties_typeProperties_userName": {
 			"value": "sftpfileshare"
 		},

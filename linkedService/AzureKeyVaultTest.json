@@ -1,9 +1,0 @@
-{
-	"name": "AzureKeyVaultTest",
-	"properties": {
-		"type": "AzureKeyVault",
-		"typeProperties": {
-			"baseUrl": "https://keyvault-test-ds.vault.azure.net/"
-		}
-	}
-}

@@ -1,0 +1,21 @@
+{
+	"name": "AzureDatabricksTest",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://westeurope.azuredatabricks.net",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultTest",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "dbxtoken"
+		},
+			"newClusterNodeType": "Standard_F4s",
+			"newClusterNumOfWorker": "1",
+			"newClusterVersion": "5.4.x-scala2.11",
+		}
+	}
+}

@@ -14,10 +14,6 @@
 				},
 				"typeProperties": {
 					"notebookPath": "/data_factory_test"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureDatabricksTest",		
-					"type": "LinkedServiceReference"
 				}
 			}
 		]
